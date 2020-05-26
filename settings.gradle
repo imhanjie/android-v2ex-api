@@ -1,0 +1,3 @@
+rootProject.name='android-v2ex-api'
+include ':app'
+include ':library'
