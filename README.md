@@ -60,9 +60,9 @@
 
 ## 示例
 
-下面以访问 V2EX 首页数据接口为例，更多完整接口文档见 👉 [项目 WiKi](https://github.com/imhanjie/android-v2ex-api/)。
+下面以访问 V2EX 首页数据接口为例，更多完整接口文档见 👉 [项目 WiKi](https://github.com/imhanjie/android-v2ex-api/wiki)。
 
-> 我这里使用的是 Retrofit 请求框架，可自行使用你项目中请求方式，如果你也使用的是 Retrofit，参考我的项目的 [ApiService](https://github.com/imhanjie/android-v2ex-app/blob/master/app/src/main/java/com/imhanjie/v2ex/api/ApiService.kt) 完整接口文件。
+> 我这里使用的是 Retrofit 请求框架，可自行使用你项目中请求方式，如果你也使用的是 Retrofit，可以参考我写的一个 V2EX 客户端项目的 [ApiService](https://github.com/imhanjie/android-v2ex-app/blob/master/app/src/main/java/com/imhanjie/v2ex/api/ApiService.kt) 完整接口文件。
 
 ``` kotlin
 interface ApiService {
