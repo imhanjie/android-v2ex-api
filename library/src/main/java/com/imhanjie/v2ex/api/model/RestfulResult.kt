@@ -1,6 +1,6 @@
 package com.imhanjie.v2ex.api.model
 
-data class Result<T>(
+data class RestfulResult<T>(
     val code: Int,
     val data: T? = null,
     val message: String? = null
@@ -12,13 +12,14 @@ data class Result<T>(
         const val CODE_FAIL = 0
         const val CODE_USER_EXPIRED = -100
 
-        fun <T> success(data: T): Result<T> =
-            Result(
+        fun <T> success(data: T): RestfulResult<T> =
+            RestfulResult(
                 CODE_SUCCESS,
                 data
             )
-        fun <T> fail(message: String, code: Int = CODE_FAIL): Result<T> =
-            Result(code, null, message)
+
+        fun <T> fail(message: String, code: Int = CODE_FAIL): RestfulResult<T> =
+            RestfulResult(code, null, message)
     }
 
 }
