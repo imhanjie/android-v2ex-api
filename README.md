@@ -124,6 +124,7 @@ interface ApiService {
 
 
 ## 接口列表
+**所有完整接口文档见 👉 [项目 WiKi](https://github.com/imhanjie/android-v2ex-api/wiki)**
 
 ##### 用户
 - [x] 用户登录
