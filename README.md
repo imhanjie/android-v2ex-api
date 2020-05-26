@@ -1,6 +1,6 @@
 ## V2EX API
 
-一个 [V2EX 社区](https://v2ex.com/)（以下简称 V 站） API 库，基于 okhttp 拦截器实现。虽然 V 站提供了一些 [API 接口](https://v2ex.com/p/7v9TEc53)，不过接口数量少且无用户登录相关接口，所以该库的目的就是通过解析 V 站的 HTML 静态页面数据以生成相应的 Json 接口数据，来使你方便的编写自己的 V2EX 社区客户端，无需关心数据解析的过程。
+一个 [V2EX 社区](https://v2ex.com/)（以下简称 V 站） API 库，基于 OkHttp 拦截器实现。虽然 V 站提供了一些 [API 接口](https://v2ex.com/p/7v9TEc53)，不过接口数量少且无用户登录相关接口，所以该库的目的就是通过解析 V 站的 HTML 静态页面数据以生成相应的 Json 接口数据，来使你方便的编写自己的 V2EX 社区客户端，无需关心数据解析的过程。
 
 
 
@@ -15,7 +15,7 @@
 2. 在 Application 中初始化：
 
    ``` kotlin
-   class MyApp : MultiDexApplication() {
+   class MyApp : Application() {
    
        override fun onCreate() {
            super.onCreate()
@@ -30,7 +30,7 @@
    }
    ```
 
-3. 配置 okhttp 客户端：
+3. 配置 OkHttp 客户端：
 
    ``` kotlin
    val okHttpClient: OkHttpClient
@@ -49,13 +49,11 @@
    ⚠️ 注意事项：
 
    - 要禁用 302 重定向。
-   - `addInterceptor()` 添加的**拦截器顺序不能错误**。
+   - `addInterceptor()` 添加的**拦截器顺序要按照 👆 的顺序，不能错误**。
 
 
 
-
-
-### 使用
+### 示例
 
 下面以访问 V2EX 首页数据接口为例：
 
@@ -67,7 +65,7 @@ interface ApiService {
     @GET("/")
     fun loadLatestTopics(
         @Query("tab") tab: String
-    ): String
+    ): RestfulResult<List<TopicItem>>
 
 }
 ```
@@ -76,7 +74,51 @@ interface ApiService {
 
 ``` json
 {
-  "code": 1
+  "code": 1,
+  "data": [
+    {
+      "id": 650005,
+      "isTop": true,
+      "latestReplyTime": "36 分钟前",
+      "nodeName": "promotions",
+      "nodeTitle": "推广",
+      "replies": 13,
+      "title": "在线表格文档系统开发，五大技术难点及解决方案",
+      "userAvatar": "https://cdn.v2ex.com/avatar/7e10/4ee6/465154_normal.png?m\u003d1579056398",
+      "userName": "GrapeCityChina"
+    },
+    {
+      "id": 675671,
+      "isTop": false,
+      "latestReplyTime": "刚刚",
+      "nodeName": "games",
+      "nodeTitle": "游戏",
+      "replies": 1,
+      "title": "有没有什么好玩的手机游戏推荐一下？安卓设备",
+      "userAvatar": "https://cdn.v2ex.com/gravatar/9d1e4e86858d71d530436b6158c2bc79?s\u003d48\u0026d\u003dretro",
+      "userName": "0x666666"
+    }
+  ]
 }
 ```
+
+
+
+### 原理
+
+
+
+
+
+### 感谢
+
+- [V2EX](https://v2ex.com/)
+- [OkHttp](https://square.github.io/okhttp/)
+- [jsoup](https://github.com/jhy/jsoup)
+
+
+
+### 最后
+
+
 
