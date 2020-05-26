@@ -38,17 +38,16 @@
 3. 配置 OkHttp 客户端：
 
    ``` kotlin
-   val okHttpClient: OkHttpClient
-       get() {
-           val builder = OkHttpClient.Builder()
-           builder
-               .followRedirects(false) // 禁用 302 重定向
-               .followSslRedirects(false)	// 禁用 302 重定向
-               .addInterceptor(LoginInterceptor())
-               .addInterceptor(ParserInterceptor())
-               .addInterceptor(CookieInterceptor)
-           return builder.build()
-       }
+   ...
+   val builder = OkHttpClient.Builder()
+   builder
+       .followRedirects(false) // 禁用 302 重定向
+       .followSslRedirects(false)	// 禁用 302 重定向
+       .addInterceptor(LoginInterceptor())
+       .addInterceptor(ParserInterceptor())
+       .addInterceptor(CookieInterceptor)
+   val okHttpClient: OkHttpClient = builder.build()
+   ...
    ```
 
    ⚠️ 注意事项：
