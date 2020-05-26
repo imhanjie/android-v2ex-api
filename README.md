@@ -60,7 +60,7 @@
 
 ## 示例
 
-下面以访问 V2EX 首页数据接口为例，更多完整接口文档见 👉 [项目 WiKi](https://github.com/imhanjie/android-v2ex-api/wiki)。
+下面以访问 V2EX 首页数据接口为例，**更多完整接口文档见 👉 [项目 WiKi](https://github.com/imhanjie/android-v2ex-api/wiki)**。
 
 > 我这里使用的是 Retrofit 请求框架，可自行使用你项目中请求方式，如果你也使用的是 Retrofit，可以参考我写的一个 V2EX 客户端项目的 [ApiService](https://github.com/imhanjie/android-v2ex-app/blob/master/app/src/main/java/com/imhanjie/v2ex/api/ApiService.kt) 完整接口文件。
 
@@ -109,9 +109,48 @@ interface ApiService {
 
 
 
-## 原理
+## 数据流转与拦截器实现
+
+![](https://tva1.sinaimg.cn/large/007S8ZIlgy1gf68wdr1ntj31im0d8acj.jpg)
+
+**项目中核心的 3 个拦截器简要说明：**
+
+- **LoginInterceptor**：专门用于处理登录接口是否登录成功以及登录失败原因的解析。
+- **ParserInterceptor**：处理 302 重定向以及所有 HTML --> Json 的数据解析。
+- **CookieInterceptor**：用于每个页面的 once 动态码与 cookies 的对应关系。
 
 
+
+
+
+## 接口列表
+
+##### 用户
+- [x] 用户登录
+- [x] 获取验证码图片
+- [x] 获取当前登录用户的个人信息
+- [x] 获取我的通知消息
+- [ ] 获取指定用户信息
+##### 主题
+- [x] 获取首页 Tab 主题
+- [x] 获取更多新主题列表
+- [x] 获取指定节点下的主题
+- [x] 获取主题详情及回复
+- [x] 感谢回复
+- [ ] 感谢主题
+- [ ] 忽略主题
+- [ ] 收藏主题
+- [ ] 创建发布主题
+- [ ] 主题添加 APPEND
+- [ ] 获取我收藏的主题
+- [ ] 获取我关注的人
+- [ ] 获取我所有关注的人的主题列表
+- [ ] 获取指定用户的所有主题及回复
+##### 节点
+- [x] 获取所有节点信息
+- [x] 收藏节点
+- [x] 取消收藏节点
+- [x] 获取我收藏的节点
 
 
 
@@ -125,5 +164,5 @@ interface ApiService {
 
 ## 最后
 
-
+由于本项目的实现原理是通过解析 V2EX 网站的 HTML 数据来实现的，所以不可避免的遇到日后 V2EX 网站更新所可能导致的解析错误，所以本项目会持续更新，若有疑问或者额外的解析需求，例如想接口添加字段等，可以通过提 issue 来反馈。
 
