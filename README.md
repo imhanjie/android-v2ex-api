@@ -52,7 +52,7 @@
 
    ⚠️ 注意事项：
 
-   - 要禁用 302 重定向，因为框架内部单独处理了 302 情况。
+   - 需要禁用 302 重定向，因为框架内部单独处理了 302 情况。
    - `addInterceptor()` 添加的**拦截器顺序要按照 👆 的顺序，不可更改**。
 
 
@@ -115,8 +115,8 @@ interface ApiService {
 **项目中核心的 3 个拦截器简要说明：**
 
 - **LoginInterceptor**：专门用于处理登录接口是否登录成功以及登录失败原因的解析。
-- **ParserInterceptor**：处理 302 重定向以及所有 HTML --> Json 的数据解析。
-- **CookieInterceptor**：用于每个页面的 once 动态码与 cookies 的对应关系。
+- **ParserInterceptor**：处理 302 重定向以及所有 html --> json 的数据解析。
+- **CookieInterceptor**：用于缓存每个页面的 once 动态码与 cookies 的对应关系。
 
 
 
