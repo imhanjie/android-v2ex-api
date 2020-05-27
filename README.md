@@ -136,11 +136,10 @@ interface ApiService {
 - [x] [指定节点下的主题](https://github.com/imhanjie/android-v2ex-api/wiki/%E6%8C%87%E5%AE%9A%E8%8A%82%E7%82%B9%E4%B8%8B%E7%9A%84%E4%B8%BB%E9%A2%98)
 - [x] [主题详情及回复](https://github.com/imhanjie/android-v2ex-api/wiki/%E4%B8%BB%E9%A2%98%E8%AF%A6%E6%83%85%E5%8F%8A%E5%9B%9E%E5%A4%8D)
 - [x] [感谢回复](https://github.com/imhanjie/android-v2ex-api/wiki/%E6%84%9F%E8%B0%A2%E5%9B%9E%E5%A4%8D)
-- [ ] 感谢主题
 - [x] [忽略主题](https://github.com/imhanjie/android-v2ex-api/wiki/%E5%BF%BD%E7%95%A5%E4%B8%BB%E9%A2%98)
 - [ ] 收藏主题
-- [ ] 创建发布主题
-- [ ] 主题添加 APPEND
+- [ ] 创建主题
+- [ ] 主题添加附言
 - [ ] 我收藏的主题
 - [ ] 我关注的人
 - [ ] 我所有关注的人的主题列表
