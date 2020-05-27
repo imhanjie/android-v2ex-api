@@ -72,6 +72,11 @@ class TopicParser : Parser {
             .selectFirst("div.cell")
         val isMyTopic = userName == rightCell.selectFirst("span.bigger")?.text()
 
+        var favoriteParam = ""
+        document.selectFirst("#Main").selectFirst("div.topic_buttons")?.selectFirst("a.tb")?.let {
+            favoriteParam = it.attr("href").split("=")[1]
+        }
+
         val replies: List<Reply> = parserReplies(document)
         return Topic(
             id,
@@ -88,7 +93,8 @@ class TopicParser : Parser {
             currentPage,
             totalPage,
             once,
-            isMyTopic
+            isMyTopic,
+            favoriteParam
         )
     }
 

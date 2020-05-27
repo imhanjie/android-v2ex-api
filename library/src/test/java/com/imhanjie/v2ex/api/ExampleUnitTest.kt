@@ -8,7 +8,7 @@ import java.io.File
 class ExampleUnitTest {
     @Test
     fun testParser() {
-        val html = File("./html/v2ex_topic_one_page.html").readText()
+        val html = File("./html/v2ex_topic.html").readText()
         val parser: Parser = TopicParser()
         println(parser.parser(html))
     }

@@ -15,7 +15,8 @@ data class Topic(
     val currentPage: Int,
     val totalPage: Int,
     val once: String,
-    val isMyTopic: Boolean
+    val isMyTopic: Boolean,
+    val favoriteParam: String
 ) {
 
     data class Subtle(
