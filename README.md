@@ -127,29 +127,29 @@ interface ApiService {
 
 ##### 用户
 - [x] [用户登录](https://github.com/imhanjie/android-v2ex-api/wiki/%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95)
-- [x] 获取当前登录用户的个人信息
-- [x] 获取我的通知消息
-- [ ] 获取指定用户信息
+- [x] [当前登录用户的个人信息](https://github.com/imhanjie/android-v2ex-api/wiki/%E5%BD%93%E5%89%8D%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7%E7%9A%84%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF)
+- [x] [我的通知消息](https://github.com/imhanjie/android-v2ex-api/wiki/%E6%88%91%E7%9A%84%E9%80%9A%E7%9F%A5%E6%B6%88%E6%81%AF)
+- [ ] 指定用户信息
 ##### 主题
-- [x] 获取首页 Tab 主题
-- [x] 获取更多新主题列表
-- [x] 获取指定节点下的主题
-- [x] 获取主题详情及回复
-- [x] 感谢回复
+- [x] [首页 Tab 主题](https://github.com/imhanjie/android-v2ex-api/wiki/%E9%A6%96%E9%A1%B5%20Tab%20%E4%B8%BB%E9%A2%98)
+- [x] [更多新主题](https://github.com/imhanjie/android-v2ex-api/wiki/%E6%9B%B4%E5%A4%9A%E6%96%B0%E4%B8%BB%E9%A2%98)
+- [x] [指定节点下的主题](https://github.com/imhanjie/android-v2ex-api/wiki/%E6%8C%87%E5%AE%9A%E8%8A%82%E7%82%B9%E4%B8%8B%E7%9A%84%E4%B8%BB%E9%A2%98)
+- [x] [主题详情及回复](https://github.com/imhanjie/android-v2ex-api/wiki/%E4%B8%BB%E9%A2%98%E8%AF%A6%E6%83%85%E5%8F%8A%E5%9B%9E%E5%A4%8D)
+- [x] [感谢回复](https://github.com/imhanjie/android-v2ex-api/wiki/%E6%84%9F%E8%B0%A2%E5%9B%9E%E5%A4%8D)
 - [ ] 感谢主题
 - [ ] 忽略主题
 - [ ] 收藏主题
 - [ ] 创建发布主题
 - [ ] 主题添加 APPEND
-- [ ] 获取我收藏的主题
-- [ ] 获取我关注的人
-- [ ] 获取我所有关注的人的主题列表
-- [ ] 获取指定用户的所有主题及回复
+- [ ] 我收藏的主题
+- [ ] 我关注的人
+- [ ] 我所有关注的人的主题列表
+- [ ] 指定用户的所有主题及回复
 ##### 节点
-- [x] 获取所有节点信息
-- [x] 收藏节点
-- [x] 取消收藏节点
-- [x] 获取我收藏的节点
+- [x] [所有节点信息](https://github.com/imhanjie/android-v2ex-api/wiki/%E6%89%80%E6%9C%89%E8%8A%82%E7%82%B9%E4%BF%A1%E6%81%AF)
+- [x] [收藏节点](https://github.com/imhanjie/android-v2ex-api/wiki/%E6%94%B6%E8%97%8F%E8%8A%82%E7%82%B9)
+- [x] [取消收藏节点](https://github.com/imhanjie/android-v2ex-api/wiki/%E5%8F%96%E6%B6%88%E6%94%B6%E8%97%8F%E8%8A%82%E7%82%B9)
+- [x] [我收藏的节点](https://github.com/imhanjie/android-v2ex-api/wiki/%E6%88%91%E6%94%B6%E8%97%8F%E7%9A%84%E8%8A%82%E7%82%B9)
 
 
 
