@@ -10,12 +10,13 @@ inline fun <reified T> parseJson(json: String): T {
 }
 
 inline fun <reified T> parseJsonList(json: String): ArrayList<T> {
+    val gson = Gson()
     val type = object : TypeToken<ArrayList<JsonObject>>() {
     }.type
-    val jsonObjects = Gson().fromJson<ArrayList<JsonObject>>(json, type)
+    val jsonObjects = gson.fromJson<ArrayList<JsonObject>>(json, type)
     val arrayList = ArrayList<T>()
     for (jsonObject in jsonObjects) {
-        arrayList.add(Gson().fromJson(jsonObject, T::class.java))
+        arrayList.add(gson.fromJson(jsonObject, T::class.java))
     }
     return arrayList
 }
