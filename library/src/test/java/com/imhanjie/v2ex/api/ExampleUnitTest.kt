@@ -1,17 +1,16 @@
 package com.imhanjie.v2ex.api
 
+import com.imhanjie.v2ex.api.parser.Parser
+import com.imhanjie.v2ex.api.parser.impl.NodeTopicsParser
 import org.junit.Test
+import java.io.File
 
-import org.junit.Assert.*
-
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
 class ExampleUnitTest {
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun testParser() {
+        val html = File("./html/v2ex_node_topics.html").readText()
+        val parser: Parser = NodeTopicsParser()
+        println(parser.parser(html))
     }
+
 }

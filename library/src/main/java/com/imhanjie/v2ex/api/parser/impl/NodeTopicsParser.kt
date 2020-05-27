@@ -17,16 +17,25 @@ class NodeTopicsParser : Parser {
         val nodeDesc = eNodeInfo.selectFirst("span.f12").text()
         val topicTotalCount = eNodeInfo.selectFirst("div.fr.f12").selectFirst("strong").text().toLong()
         val eA = eNodeInfo.selectFirst("div.fr.f12").selectFirst("a")
-        val isFavorite = eA.text() == "取消收藏"
-        val nodeId = eA.attr("href").split("?")[0].split("/").last().toLong()
-        val once = eA.attr("href").split("=").last()
-
+        var isFavorite = false
+        var once = ""
+        var nodeId = 0L
+        eA?.let {
+            isFavorite = it.text() == "取消收藏"
+            once = it.attr("href").split("=").last()
+            nodeId = it.attr("href").split("?")[0].split("/").last().toLong()
+        }
         val nodeAvatar = document.selectFirst("div.node_avatar").selectFirst("img")?.attr("src") ?: ""
-        val nodeName = document.select("input")
-            .first { it.attr("value") == "创建新主题" }
-            .attr("onclick")
-            .split("'")[1]
-            .split("/")[2]
+//        val nodeName = document.select("input")
+//            .first { it.attr("value") == "创建新主题" }
+//            .attr("onclick")
+//            .split("'")[1]
+//            .split("/")[2]
+        val searchStr = "var nodeName = \""
+        val startIndex = html.indexOf(searchStr) + searchStr.length
+        val endIndex = html.indexOf("\"", startIndex)
+        val nodeName = html.substring(startIndex, endIndex)
+
 
         val topics = document.select("#TopicsNode").select("div.cell").map { eCell ->
             val eTitle = eCell.selectFirst("a.topic-link")
