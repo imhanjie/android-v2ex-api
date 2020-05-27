@@ -126,8 +126,7 @@ interface ApiService {
 **所有完整接口文档见 👉 [项目 WiKi](https://github.com/imhanjie/android-v2ex-api/wiki)**
 
 ##### 用户
-- [x] 用户登录
-- [x] 获取验证码图片
+- [x] [用户登录](https://github.com/imhanjie/android-v2ex-api/wiki/%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95)
 - [x] 获取当前登录用户的个人信息
 - [x] 获取我的通知消息
 - [ ] 获取指定用户信息

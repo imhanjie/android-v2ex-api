@@ -17,8 +17,7 @@ class LoginInterceptor : Interceptor {
         val method = request.method()
 
         /**
-         * 因为在 GET /signin 接口中不能携带 cookies，而在 SignInCookieManager 中不能对接口的请求方法做判断，
-         * 所以只有在这里附带将 cookies 清除掉。
+         * GET /signin 接口中不能携带 cookies
          */
         val requestUrl = request.url().toString()
         if (requestUrl == "${V2exConstants.BASE_URL}/signin" && method.toUpperCase() == "GET") {
