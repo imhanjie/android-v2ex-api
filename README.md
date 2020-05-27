@@ -14,7 +14,7 @@
 1. 添加 Gradle 依赖：
 
    ```groovy
-   implementation 'com.imhanjie.library:v2ex-api:0.1.4'
+   implementation 'com.imhanjie.library:v2ex-api:0.1.6'
    ```
 
 2. 在 Application 中初始化：

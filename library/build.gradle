@@ -16,7 +16,7 @@ publish {
     userOrg = 'melody'
     groupId = 'com.imhanjie.library'
     artifactId = 'v2ex-api'
-    publishVersion = '0.1.5'
+    publishVersion = '0.1.6'
     desc = 'v2ex api library for android'
     website = 'https://github.com/imhanjie/android-v2ex-api'
 }
