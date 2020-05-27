@@ -73,8 +73,10 @@ class TopicParser : Parser {
         val isMyTopic = userName == rightCell.selectFirst("span.bigger")?.text()
 
         var favoriteParam = ""
+        var isFavorite = false
         document.selectFirst("#Main").selectFirst("div.topic_buttons")?.selectFirst("a.tb")?.let {
             favoriteParam = it.attr("href").split("=")[1]
+            isFavorite = it.text() == "取消收藏"
         }
 
         val replies: List<Reply> = parserReplies(document)
@@ -94,7 +96,8 @@ class TopicParser : Parser {
             totalPage,
             once,
             isMyTopic,
-            favoriteParam
+            favoriteParam,
+            isFavorite
         )
     }
 
