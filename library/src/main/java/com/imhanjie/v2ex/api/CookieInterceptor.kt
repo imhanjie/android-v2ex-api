@@ -70,7 +70,9 @@ object CookieInterceptor : Interceptor {
         // load A2
         val a2Cookie = V2exApi.a2CookieProvider?.invoke() ?: ""
         if (a2Cookie.isNotEmpty()) {
-            resultCookies.add(Cookie.parse(request.url(), a2Cookie)!!)
+            Cookie.parse(request.url(), a2Cookie)?.let {
+                resultCookies.add(it)
+            }
         }
 
         return if (resultCookies.isEmpty()) {

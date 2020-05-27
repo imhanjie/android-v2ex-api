@@ -36,8 +36,8 @@ class ParserInterceptor : Interceptor {
             } else if (url.startsWith("/signin?next=")) {
                 // 登录信息失效，直接返回
                 return response.recreateFailJsonResponse("请先登录后再进行查看", RestfulResult.CODE_USER_EXPIRED)
-            } else if (url.startsWith("${V2exConstants.BASE_URL}/go")) {
-                // 收藏 / 取消收藏成功
+            } else {
+                // 其余重定向一律视为请求成功
                 return response.recreateSuccessJsonResponse("")
             }
         } else if (response.code() == 403) {
