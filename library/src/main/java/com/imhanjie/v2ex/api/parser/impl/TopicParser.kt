@@ -1,9 +1,9 @@
 package com.imhanjie.v2ex.api.parser.impl
 
-import com.imhanjie.v2ex.api.support.RegexPattern
 import com.imhanjie.v2ex.api.model.Reply
 import com.imhanjie.v2ex.api.model.Topic
 import com.imhanjie.v2ex.api.parser.Parser
+import com.imhanjie.v2ex.api.support.RegexPattern
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import kotlin.math.max
@@ -67,6 +67,11 @@ class TopicParser : Parser {
             once = onceMatcher.group().split("=")[1]
         }
 
+        val rightCell = document.selectFirst("#Rightbar")
+            .selectFirst("div.box")
+            .selectFirst("div.cell")
+        val isMyTopic = userName == rightCell.selectFirst("span.bigger")?.text()
+
         val replies: List<Reply> = parserReplies(document)
         return Topic(
             id,
@@ -82,7 +87,8 @@ class TopicParser : Parser {
             replies,
             currentPage,
             totalPage,
-            once
+            once,
+            isMyTopic
         )
     }
 

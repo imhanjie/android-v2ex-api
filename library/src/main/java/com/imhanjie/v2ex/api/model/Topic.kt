@@ -14,7 +14,8 @@ data class Topic(
     val replies: List<Reply>,
     val currentPage: Int,
     val totalPage: Int,
-    val once: String
+    val once: String,
+    val isMyTopic: Boolean
 ) {
 
     data class Subtle(
