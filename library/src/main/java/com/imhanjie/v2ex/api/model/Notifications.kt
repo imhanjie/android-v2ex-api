@@ -1,16 +1,16 @@
 package com.imhanjie.v2ex.api.model
 
 data class Notifications(
-    val items: List<Item>,
-    val currentPage: Int,
-    val totalPage: Int
+    var items: List<Item>,
+    var currentPage: Int,
+    var totalPage: Int
 ) {
 
     data class Item(
-        val userAvatar: String,
-        val titleRichContent: String,
-        val replyRichContent: String,
-        val createTime: String
+        var userAvatar: String,
+        var titleRichContent: String,
+        var replyRichContent: String,
+        var createTime: String
     )
 
 }

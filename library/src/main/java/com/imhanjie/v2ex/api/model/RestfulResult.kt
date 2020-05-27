@@ -1,9 +1,9 @@
 package com.imhanjie.v2ex.api.model
 
 data class RestfulResult<T>(
-    val code: Int,
-    val data: T? = null,
-    val message: String? = null
+    var code: Int,
+    var data: T? = null,
+    var message: String? = null
 ) {
 
     companion object {

@@ -1,13 +1,13 @@
 package com.imhanjie.v2ex.api.model
 
 data class MyUserInfo(
-    val userName: String,
-    val avatar: String,
-    val nodeStars: Long,
-    val topicStars: Long,
-    val following: Long,
-    val siteNo: Long,
-    val moneyGold: Long,
-    val moneySilver: Long,
-    val moneyBronze: Long
+    var userName: String,
+    var avatar: String,
+    var nodeStars: Long,
+    var topicStars: Long,
+    var following: Long,
+    var siteNo: Long,
+    var moneyGold: Long,
+    var moneySilver: Long,
+    var moneyBronze: Long
 )

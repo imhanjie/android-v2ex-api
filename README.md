@@ -14,7 +14,7 @@
 1. 添加 Gradle 依赖：
 
    ```groovy
-   implementation 'com.imhanjie.library:v2ex-api:0.1.6'
+   implementation 'com.imhanjie.library:v2ex-api:0.1.11'
    ```
 
 2. 在 Application 中初始化：
@@ -43,6 +43,7 @@
    builder
        .followRedirects(false) // 禁用 302 重定向
        .followSslRedirects(false)	// 禁用 302 重定向
+       .addInterceptor(HeaderInterceptor())
        .addInterceptor(LoginInterceptor())
        .addInterceptor(ParserInterceptor())
        .addInterceptor(CookieInterceptor)
@@ -114,6 +115,7 @@ interface ApiService {
 
 **项目中核心的 3 个拦截器简要说明：**
 
+- **HeaderInterceptor**：用于处理部分接口请求时需要添加一些动态请求头。
 - **LoginInterceptor**：专门用于处理登录接口是否登录成功以及登录失败原因的解析。
 - **ParserInterceptor**：处理 302 重定向以及所有 html --> json 的数据解析。
 - **CookieInterceptor**：用于缓存每个页面的 once 动态码与 cookies 的对应关系。
