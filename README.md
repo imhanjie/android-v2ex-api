@@ -26,8 +26,8 @@
            super.onCreate()
            ...
            V2exApi.init {
-               // 返回在登录接口你拿到的用户标识 a2Cookie 值, 没有或未登录可返回 null or ""
-               "xxxxxxxxxxx"
+               // 返回在登录接口拿到的用户标识 cookie 值, 没有或未登录可返回 null or ""
+               "return your cookie"
            }
            ...
        }

@@ -26,16 +26,11 @@ class NodeTopicsParser : Parser {
             nodeId = it.attr("href").split("?")[0].split("/").last().toLong()
         }
         val nodeAvatar = document.selectFirst("div.node_avatar").selectFirst("img")?.attr("src") ?: ""
-//        val nodeName = document.select("input")
-//            .first { it.attr("value") == "创建新主题" }
-//            .attr("onclick")
-//            .split("'")[1]
-//            .split("/")[2]
+
         val searchStr = "var nodeName = \""
         val startIndex = html.indexOf(searchStr) + searchStr.length
         val endIndex = html.indexOf("\"", startIndex)
         val nodeName = html.substring(startIndex, endIndex)
-
 
         val topics = document.select("#TopicsNode").select("div.cell").map { eCell ->
             val eTitle = eCell.selectFirst("a.topic-link")
