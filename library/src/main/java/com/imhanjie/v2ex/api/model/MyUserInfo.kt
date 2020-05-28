@@ -1,7 +1,7 @@
 package com.imhanjie.v2ex.api.model
 
 data class MyUserInfo(
-    var userName: String,
+    var name: String,
     var avatar: String,
     var nodeStars: Long,
     var topicStars: Long,

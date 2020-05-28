@@ -131,7 +131,13 @@ interface ApiService {
 - [x] [用户登录](https://github.com/imhanjie/android-v2ex-api/wiki/%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95)
 - [x] [当前登录用户的个人信息](https://github.com/imhanjie/android-v2ex-api/wiki/%E5%BD%93%E5%89%8D%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7%E7%9A%84%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF)
 - [x] [我的通知消息](https://github.com/imhanjie/android-v2ex-api/wiki/%E6%88%91%E7%9A%84%E9%80%9A%E7%9F%A5%E6%B6%88%E6%81%AF)
-- [ ] 指定用户信息
+- [x] [用户信息](https://github.com/imhanjie/android-v2ex-api/wiki/%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF)
+- [ ] 用户所有主题
+- [ ] 用户所有回复
+- [x] [关注用户](https://github.com/imhanjie/android-v2ex-api/wiki/%E5%85%B3%E6%B3%A8%E7%94%A8%E6%88%B7)
+- [x] [取消关注用户](https://github.com/imhanjie/android-v2ex-api/wiki/%E5%8F%96%E6%B6%88%E5%85%B3%E6%B3%A8%E7%94%A8%E6%88%B7)
+- [x] [屏蔽用户](https://github.com/imhanjie/android-v2ex-api/wiki/%E5%B1%8F%E8%94%BD%E7%94%A8%E6%88%B7)
+- [x] [取消屏蔽用户](https://github.com/imhanjie/android-v2ex-api/wiki/%E5%8F%96%E6%B6%88%E5%B1%8F%E8%94%BD%E7%94%A8%E6%88%B7)
 ##### 主题
 - [x] [首页 Tab 主题](https://github.com/imhanjie/android-v2ex-api/wiki/%E9%A6%96%E9%A1%B5%20Tab%20%E4%B8%BB%E9%A2%98)
 - [x] [更多新主题](https://github.com/imhanjie/android-v2ex-api/wiki/%E6%9B%B4%E5%A4%9A%E6%96%B0%E4%B8%BB%E9%A2%98)

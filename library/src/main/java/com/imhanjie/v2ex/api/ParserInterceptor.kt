@@ -38,7 +38,6 @@ class ParserInterceptor : Interceptor {
                 // 登录信息失效，直接返回
                 return response.recreateFailJsonResponse("请先登录后再进行查看", RestfulResult.CODE_USER_EXPIRED)
             } else if (requestUrl.startsWith("${V2exConstants.BASE_URL}/favorite/topic/") || requestUrl.startsWith("${V2exConstants.BASE_URL}/unfavorite/topic/")) {
-                // 收藏主题 或 取消收藏主题后的重定向应该去请求重定向后的主题将新的 Topic 对象给调用方，例如因为调用方需要里面最新的 favoriteParam 参数
                 response.close()
                 val redirectRequest = Request.Builder()
                     .url(redirectUrl)
@@ -46,6 +45,22 @@ class ParserInterceptor : Interceptor {
                     .build()
                 response = chain.proceed(redirectRequest)
                 requestUrl = redirectUrl
+            } else if (requestUrl.startsWith("${V2exConstants.BASE_URL}/follow/") || requestUrl.startsWith("${V2exConstants.BASE_URL}/unfollow/")) {
+                response.close()
+                val redirectRequest = Request.Builder()
+                    .url(redirectUrl)
+                    .get()
+                    .build()
+                response = chain.proceed(redirectRequest)
+                requestUrl = redirectUrl
+            } else if (requestUrl.startsWith("${V2exConstants.BASE_URL}/block/") || requestUrl.startsWith("${V2exConstants.BASE_URL}/unblock/")) {
+                response.close()
+                val redirectRequest = Request.Builder()
+                    .url(V2exConstants.BASE_URL + redirectUrl)
+                    .get()
+                    .build()
+                response = chain.proceed(redirectRequest)
+                requestUrl = V2exConstants.BASE_URL + redirectUrl
             } else {
                 // 其余重定向一律视为请求成功
                 return response.recreateSuccessJsonResponse("")
@@ -118,6 +133,8 @@ class ParserInterceptor : Interceptor {
                 V2exResultParser()
             } else if (startsWith("${V2exConstants.BASE_URL}/my/topics?p=")) {
                 MyFavoriteTopicsParser()
+            } else if (startsWith("${V2exConstants.BASE_URL}/member/")) {
+                MemberParser()
             } else {
                 null
             }
