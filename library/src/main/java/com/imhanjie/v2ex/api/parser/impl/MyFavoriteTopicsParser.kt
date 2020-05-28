@@ -1,6 +1,6 @@
 package com.imhanjie.v2ex.api.parser.impl
 
-import com.imhanjie.v2ex.api.model.MyFavoriteTopics
+import com.imhanjie.v2ex.api.model.FavoriteTopics
 import com.imhanjie.v2ex.api.model.TopicItem
 import com.imhanjie.v2ex.api.parser.Parser
 import org.jsoup.Jsoup
@@ -48,7 +48,7 @@ class MyFavoriteTopicsParser : Parser {
                 isTop
             )
         }
-        return MyFavoriteTopics(
+        return FavoriteTopics(
             topics, currentPage, totalPage
         )
     }

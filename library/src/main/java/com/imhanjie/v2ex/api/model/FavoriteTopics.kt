@@ -1,6 +1,6 @@
 package com.imhanjie.v2ex.api.model
 
-data class MyFavoriteTopics(
+data class FavoriteTopics(
     var topics: List<TopicItem>,
     var currentPage: Int,
     var totalPage: Int
