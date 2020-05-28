@@ -116,6 +116,8 @@ class ParserInterceptor : Interceptor {
                 NotificationsParser()
             } else if (startsWith("${V2exConstants.BASE_URL}/thank/reply/")) {
                 V2exResultParser()
+            } else if (equals("${V2exConstants.BASE_URL}/my/topics")) {
+                MyFavoriteTopicsParser()
             } else {
                 null
             }
