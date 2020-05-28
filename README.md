@@ -143,7 +143,7 @@ interface ApiService {
 - [x] [取消收藏主题](https://github.com/imhanjie/android-v2ex-api/wiki/%E5%8F%96%E6%B6%88%E6%94%B6%E8%97%8F%E4%B8%BB%E9%A2%98)
 - [ ] 创建主题
 - [ ] 主题添加附言
-- [ ] 我收藏的主题
+- [x] [我收藏的主题](https://github.com/imhanjie/android-v2ex-api/wiki/%E6%88%91%E6%94%B6%E8%97%8F%E7%9A%84%E4%B8%BB%E9%A2%98)
 - [ ] 我关注的人
 - [ ] 我所有关注的人的主题列表
 - [ ] 指定用户的所有主题及回复
