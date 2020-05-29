@@ -15,12 +15,14 @@ class NotificationsParser : Parser {
             .select("div.cell")
             .filter { it.attr("id").isNotEmpty() }
             .map {
+                val id = it.attr("id")
                 val userAvatar = it.selectFirst("img").attr("src").replace("_mini", "_large")
                 val titleRichContent = it.selectFirst("span.fade").html()
                 val replyRichContent = it.selectFirst("div.payload")?.html() ?: ""
                 val createTime = it.selectFirst("span.snow").text()
 
                 Notifications.Item(
+                    id,
                     userAvatar,
                     titleRichContent,
                     replyRichContent,

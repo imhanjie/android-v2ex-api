@@ -7,6 +7,7 @@ data class Notifications(
 ) {
 
     data class Item(
+        var id: String,
         var userAvatar: String,
         var titleRichContent: String,
         var replyRichContent: String,

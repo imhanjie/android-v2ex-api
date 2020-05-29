@@ -1,7 +1,7 @@
 package com.imhanjie.v2ex.api
 
 import com.imhanjie.v2ex.api.parser.Parser
-import com.imhanjie.v2ex.api.parser.impl.MemberParser
+import com.imhanjie.v2ex.api.parser.impl.NotificationsParser
 import com.imhanjie.v2ex.api.support.removeQueryParams
 import org.junit.Test
 import java.io.File
@@ -9,8 +9,8 @@ import java.io.File
 class ExampleUnitTest {
     @Test
     fun testParser() {
-        val html = File("./html/v2ex_member_other.html").readText()
-        val parser: Parser = MemberParser()
+        val html = File("./html/v2ex_notifications.html").readText()
+        val parser: Parser = NotificationsParser()
         println(parser.parser(html))
     }
 
