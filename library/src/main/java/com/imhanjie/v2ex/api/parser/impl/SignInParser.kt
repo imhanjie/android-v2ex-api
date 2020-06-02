@@ -1,10 +1,17 @@
 package com.imhanjie.v2ex.api.parser.impl
 
+import android.annotation.SuppressLint
+import com.imhanjie.v2ex.api.ParserMatcher
 import com.imhanjie.v2ex.api.model.SignIn
-import com.imhanjie.v2ex.api.parser.Parser
+import com.imhanjie.v2ex.api.support.V2exConstants
 import org.jsoup.Jsoup
 
-class SignInParser : Parser {
+class SignInParser : ParserMatcher {
+
+    @SuppressLint("DefaultLocale")
+    override fun match(url: String, method: String): Boolean {
+        return url == "${V2exConstants.BASE_URL}/signin" && method.toUpperCase() == "GET"
+    }
 
     override fun parser(html: String): Any {
         val document = Jsoup.parse(html)

@@ -1,11 +1,17 @@
 package com.imhanjie.v2ex.api.parser.impl
 
+import com.imhanjie.v2ex.api.ParserMatcher
 import com.imhanjie.v2ex.api.model.Member
-import com.imhanjie.v2ex.api.parser.Parser
 import com.imhanjie.v2ex.api.support.RegexPattern
+import com.imhanjie.v2ex.api.support.V2exConstants
 import org.jsoup.Jsoup
+import java.util.regex.Pattern
 
-class MemberParser : Parser {
+class MemberParser : ParserMatcher {
+
+    override fun match(url: String, method: String): Boolean {
+        return Pattern.compile("^${V2exConstants.BASE_URL}/member/\\w+\$").matcher(url).find()
+    }
 
     override fun parser(html: String): Any {
         val document = Jsoup.parse(html)

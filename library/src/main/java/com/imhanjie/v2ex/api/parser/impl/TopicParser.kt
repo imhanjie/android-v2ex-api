@@ -1,14 +1,19 @@
 package com.imhanjie.v2ex.api.parser.impl
 
+import com.imhanjie.v2ex.api.ParserMatcher
 import com.imhanjie.v2ex.api.model.Reply
 import com.imhanjie.v2ex.api.model.Topic
-import com.imhanjie.v2ex.api.parser.Parser
 import com.imhanjie.v2ex.api.support.RegexPattern
+import com.imhanjie.v2ex.api.support.V2exConstants
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import kotlin.math.max
 
-class TopicParser : Parser {
+class TopicParser : ParserMatcher {
+
+    override fun match(url: String, method: String): Boolean {
+        return url.startsWith("${V2exConstants.BASE_URL}/t/")
+    }
 
     override fun parser(html: String): Any {
         val document = Jsoup.parse(html)

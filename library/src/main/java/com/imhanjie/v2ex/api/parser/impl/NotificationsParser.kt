@@ -1,11 +1,16 @@
 package com.imhanjie.v2ex.api.parser.impl
 
+import com.imhanjie.v2ex.api.ParserMatcher
 import com.imhanjie.v2ex.api.model.Notifications
-import com.imhanjie.v2ex.api.parser.Parser
+import com.imhanjie.v2ex.api.support.V2exConstants
 import org.jsoup.Jsoup
 import kotlin.math.max
 
-class NotificationsParser : Parser {
+class NotificationsParser : ParserMatcher {
+
+    override fun match(url: String, method: String): Boolean {
+        return url.startsWith("${V2exConstants.BASE_URL}/notifications?p=")
+    }
 
     override fun parser(html: String): Any {
         val document = Jsoup.parse(html)

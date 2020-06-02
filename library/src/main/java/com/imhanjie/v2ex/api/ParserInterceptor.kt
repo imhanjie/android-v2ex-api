@@ -1,9 +1,7 @@
 package com.imhanjie.v2ex.api
 
-import android.annotation.SuppressLint
 import com.imhanjie.v2ex.api.model.RestfulResult
 import com.imhanjie.v2ex.api.model.V2exResult
-import com.imhanjie.v2ex.api.parser.Parser
 import com.imhanjie.v2ex.api.parser.impl.*
 import com.imhanjie.v2ex.api.support.V2exConstants
 import com.imhanjie.v2ex.api.support.recreateFailJsonResponse
@@ -11,6 +9,26 @@ import com.imhanjie.v2ex.api.support.recreateSuccessJsonResponse
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
+
+/**
+ * 匹配器注册
+ */
+val MATCHER_REGISTRATION = listOf<ParserMatcher>(
+    CoolDownParser(),
+    LatestTopicsParser(),
+    MemberParser(),
+    MemberRepliesParser(),
+    MemberTopicsParser(),
+    MyFavoriteTopicsParser(),
+    MyNodesParser(),
+    NodeParser(),
+    NodeTopicsParser(),
+    NotificationsParser(),
+    SettingsParser(),
+    SignInParser(),
+    TopicParser(),
+    V2exResultParser()
+)
 
 class ParserInterceptor : Interceptor {
 
@@ -69,8 +87,7 @@ class ParserInterceptor : Interceptor {
             // IP 被(临时)禁
             return response.recreateFailJsonResponse("403 请稍后再试")
         }
-
-        val targetParser = getParser(originMethod, requestUrl)
+        val targetParser = MATCHER_REGISTRATION.firstOrNull { it.match(requestUrl, originMethod) }
         if (targetParser == null) {
             // 未发现 html 解析器，说明不需要解析，直接返回 response
             return response
@@ -100,45 +117,39 @@ class ParserInterceptor : Interceptor {
         }
     }
 
-    /**
-     * 根据 url 获取 html 解析器
-     *
-     * @param url 请求的 url
-     * @return 若返回 null 说明不需要解析，反之需要解析
-     */
-    @SuppressLint("DefaultLocale")
-    private fun getParser(method: String, url: String): Parser? {
-        return with(url) {
-            if (startsWith("${V2exConstants.BASE_URL}/recent?p=")
-                || startsWith("${V2exConstants.BASE_URL}/?tab=")
-            ) {
-                LatestTopicsParser()
-            } else if (startsWith("${V2exConstants.BASE_URL}/t/")) {
-                TopicParser()
-            } else if (startsWith("${V2exConstants.BASE_URL}/go/")) {
-                NodeTopicsParser()
-            } else if (equals("${V2exConstants.BASE_URL}/signin") && method.toUpperCase() == "GET") {
-                SignInParser()
-            } else if (equals("/signin/cooldown")) {
-                CoolDownParser()
-            } else if (equals("${V2exConstants.BASE_URL}/settings")) {
-                SettingsParser()
-            } else if (equals("${V2exConstants.BASE_URL}/planes")) {
-                NodeParser()
-            } else if (equals("${V2exConstants.BASE_URL}/my/nodes")) {
-                MyNodesParser()
-            } else if (startsWith("${V2exConstants.BASE_URL}/notifications?p=")) {
-                NotificationsParser()
-            } else if (startsWith("${V2exConstants.BASE_URL}/thank/reply/")) {
-                V2exResultParser()
-            } else if (startsWith("${V2exConstants.BASE_URL}/my/topics?p=")) {
-                MyFavoriteTopicsParser()
-            } else if (startsWith("${V2exConstants.BASE_URL}/member/")) {
-                MemberParser()
-            } else {
-                null
-            }
-        }
-    }
+//    @SuppressLint("DefaultLocale")
+//    private fun getParser(method: String, url: String): Parser? {
+//        return with(url) {
+//            if (startsWith("${V2exConstants.BASE_URL}/recent?p=")
+//                || startsWith("${V2exConstants.BASE_URL}/?tab=")
+//            ) {
+//                LatestTopicsParser()
+//            } else if (startsWith("${V2exConstants.BASE_URL}/t/")) {
+//                TopicParser()
+//            } else if (startsWith("${V2exConstants.BASE_URL}/go/")) {
+//                NodeTopicsParser()
+//            } else if (equals("${V2exConstants.BASE_URL}/signin") && method.toUpperCase() == "GET") {
+//                SignInParser()
+//            } else if (equals("/signin/cooldown")) {
+//                CoolDownParser()
+//            } else if (equals("${V2exConstants.BASE_URL}/settings")) {
+//                SettingsParser()
+//            } else if (equals("${V2exConstants.BASE_URL}/planes")) {
+//                NodeParser()
+//            } else if (equals("${V2exConstants.BASE_URL}/my/nodes")) {
+//                MyNodesParser()
+//            } else if (startsWith("${V2exConstants.BASE_URL}/notifications?p=")) {
+//                NotificationsParser()
+//            } else if (startsWith("${V2exConstants.BASE_URL}/thank/reply/")) {
+//                V2exResultParser()
+//            } else if (startsWith("${V2exConstants.BASE_URL}/my/topics?p=")) {
+//                MyFavoriteTopicsParser()
+//            } else if (startsWith("${V2exConstants.BASE_URL}/member/")) {
+//                MemberParser()
+//            } else {
+//                null
+//            }
+//        }
+//    }
 
 }
