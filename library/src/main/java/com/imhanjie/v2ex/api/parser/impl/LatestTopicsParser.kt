@@ -2,14 +2,14 @@ package com.imhanjie.v2ex.api.parser.impl
 
 import com.imhanjie.v2ex.api.ParserMatcher
 import com.imhanjie.v2ex.api.model.TopicItem
-import com.imhanjie.v2ex.api.support.V2exConstants
+import com.imhanjie.v2ex.api.support.V2ex
 import org.jsoup.Jsoup
 
-class LatestTopicsParser : ParserMatcher {
+object LatestTopicsParser : ParserMatcher {
 
     override fun match(url: String, method: String): Boolean {
-        return url.startsWith("${V2exConstants.BASE_URL}/recent?p=")
-                || url.startsWith("${V2exConstants.BASE_URL}/?tab=")
+        return url.startsWith("${V2ex.BASE_URL}/recent?p=")
+                || url.startsWith("${V2ex.BASE_URL}/?tab=")
     }
 
     override fun parser(html: String): Any {

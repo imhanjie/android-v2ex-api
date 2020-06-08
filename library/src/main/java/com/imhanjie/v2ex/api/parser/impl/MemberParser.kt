@@ -3,14 +3,14 @@ package com.imhanjie.v2ex.api.parser.impl
 import com.imhanjie.v2ex.api.ParserMatcher
 import com.imhanjie.v2ex.api.model.Member
 import com.imhanjie.v2ex.api.support.RegexPattern
-import com.imhanjie.v2ex.api.support.V2exConstants
+import com.imhanjie.v2ex.api.support.V2ex
 import org.jsoup.Jsoup
 import java.util.regex.Pattern
 
-class MemberParser : ParserMatcher {
+object MemberParser : ParserMatcher {
 
     override fun match(url: String, method: String): Boolean {
-        return Pattern.compile("^${V2exConstants.BASE_URL}/member/\\w+\$").matcher(url).find()
+        return Pattern.compile("^${V2ex.BASE_URL}/member/\\w+\$").matcher(url).find()
     }
 
     override fun parser(html: String): Any {

@@ -4,15 +4,15 @@ import com.imhanjie.v2ex.api.ParserMatcher
 import com.imhanjie.v2ex.api.model.Reply
 import com.imhanjie.v2ex.api.model.Topic
 import com.imhanjie.v2ex.api.support.RegexPattern
-import com.imhanjie.v2ex.api.support.V2exConstants
+import com.imhanjie.v2ex.api.support.V2ex
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import kotlin.math.max
 
-class TopicParser : ParserMatcher {
+object TopicParser : ParserMatcher {
 
     override fun match(url: String, method: String): Boolean {
-        return url.startsWith("${V2exConstants.BASE_URL}/t/")
+        return url.startsWith("${V2ex.BASE_URL}/t/")
     }
 
     override fun parser(html: String): Any {

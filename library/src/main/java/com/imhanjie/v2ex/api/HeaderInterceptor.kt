@@ -1,7 +1,7 @@
 package com.imhanjie.v2ex.api
 
 import android.annotation.SuppressLint
-import com.imhanjie.v2ex.api.support.V2exConstants
+import com.imhanjie.v2ex.api.support.V2ex
 import com.imhanjie.v2ex.api.support.extractUrlQueryParams
 import com.imhanjie.v2ex.api.support.removeQueryParams
 import okhttp3.Interceptor
@@ -16,26 +16,26 @@ class HeaderInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         var request = chain.request()
         val fullRequestUrl = request.url().toString()
-        val requestUrl = request.url().toString().replace(V2exConstants.BASE_URL, "")
+        val requestUrl = request.url().toString().replace(V2ex.BASE_URL, "")
 
         // 收藏 & 取消收藏主题
         request =
             if (requestUrl.startsWith("/favorite/topic/") || requestUrl.startsWith("/unfavorite/topic/")) {
                 val topicId = requestUrl.split("?")[0].split("/").last()
                 request.newBuilder().apply {
-                    header("Referer", "${V2exConstants.BASE_URL}/t/$topicId")
+                    header("Referer", "${V2ex.BASE_URL}/t/$topicId")
                 }.build()
             } else if (requestUrl.startsWith("/_captcha")) {
                 request.newBuilder().apply {
-                    header("Referer", "${V2exConstants.BASE_URL}/signin")
+                    header("Referer", "${V2ex.BASE_URL}/signin")
                 }.build()
             } else if (requestUrl.startsWith("/signin") && request.method().toUpperCase() == "POST") {
                 request.newBuilder().apply {
-                    header("Referer", "${V2exConstants.BASE_URL}/signin")
+                    header("Referer", "${V2ex.BASE_URL}/signin")
                 }.build()
             } else if (requestUrl.startsWith("/favorite/node/") || requestUrl.startsWith("/unfavorite/node/")) {
                 request.newBuilder().apply {
-                    header("Referer", "${V2exConstants.BASE_URL}/go")
+                    header("Referer", "${V2ex.BASE_URL}/go")
                 }.build()
             } else if (requestUrl.startsWith("/follow/") || requestUrl.startsWith("/unfollow/")
                 || requestUrl.startsWith("/block/") || requestUrl.startsWith("/unblock/")
@@ -46,7 +46,7 @@ class HeaderInterceptor : Interceptor {
                 val userName = paramsMap["userName"]
                 request.newBuilder().apply {
                     url(removeQueryParams(fullRequestUrl, "userName"))
-                    header("Referer", "${V2exConstants.BASE_URL}/member/$userName")
+                    header("Referer", "${V2ex.BASE_URL}/member/$userName")
                 }.build()
             } else {
                 request

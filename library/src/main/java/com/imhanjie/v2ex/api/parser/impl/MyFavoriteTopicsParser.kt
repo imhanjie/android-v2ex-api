@@ -3,14 +3,14 @@ package com.imhanjie.v2ex.api.parser.impl
 import com.imhanjie.v2ex.api.ParserMatcher
 import com.imhanjie.v2ex.api.model.FavoriteTopics
 import com.imhanjie.v2ex.api.model.TopicItem
-import com.imhanjie.v2ex.api.support.V2exConstants
+import com.imhanjie.v2ex.api.support.V2ex
 import org.jsoup.Jsoup
 import kotlin.math.max
 
-class MyFavoriteTopicsParser : ParserMatcher {
+object MyFavoriteTopicsParser : ParserMatcher {
 
     override fun match(url: String, method: String): Boolean {
-        return url.startsWith("${V2exConstants.BASE_URL}/my/topics?p=")
+        return url.startsWith("${V2ex.BASE_URL}/my/topics?p=")
     }
 
     override fun parser(html: String): Any {

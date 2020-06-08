@@ -2,13 +2,13 @@ package com.imhanjie.v2ex.api.parser.impl
 
 import com.imhanjie.v2ex.api.ParserMatcher
 import com.imhanjie.v2ex.api.model.TinyNode
-import com.imhanjie.v2ex.api.support.V2exConstants
+import com.imhanjie.v2ex.api.support.V2ex
 import org.jsoup.Jsoup
 
-class NodeParser : ParserMatcher {
+object NodeParser : ParserMatcher {
 
     override fun match(url: String, method: String): Boolean {
-        return url == "${V2exConstants.BASE_URL}/planes"
+        return url == "${V2ex.BASE_URL}/planes"
     }
 
     override fun parser(html: String): List<TinyNode> {

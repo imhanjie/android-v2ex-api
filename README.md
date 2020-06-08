@@ -150,7 +150,6 @@ interface ApiService {
 - [ ] 创建主题
 - [ ] 主题添加附言
 - [x] [我收藏的主题](https://github.com/imhanjie/android-v2ex-api/wiki/%E6%88%91%E6%94%B6%E8%97%8F%E7%9A%84%E4%B8%BB%E9%A2%98)
-- [ ] 指定用户的所有主题及回复
 ##### 节点
 - [x] [所有节点信息](https://github.com/imhanjie/android-v2ex-api/wiki/%E6%89%80%E6%9C%89%E8%8A%82%E7%82%B9%E4%BF%A1%E6%81%AF)
 - [x] [收藏节点](https://github.com/imhanjie/android-v2ex-api/wiki/%E6%94%B6%E8%97%8F%E8%8A%82%E7%82%B9)

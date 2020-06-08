@@ -2,15 +2,15 @@ package com.imhanjie.v2ex.api.parser.impl
 
 import com.imhanjie.v2ex.api.ParserMatcher
 import com.imhanjie.v2ex.api.model.MemberReplies
-import com.imhanjie.v2ex.api.support.V2exConstants
+import com.imhanjie.v2ex.api.support.V2ex
 import org.jsoup.Jsoup
 import java.util.regex.Pattern
 import kotlin.math.max
 
-class MemberRepliesParser : ParserMatcher {
+object MemberRepliesParser : ParserMatcher {
 
     override fun match(url: String, method: String): Boolean {
-        return Pattern.compile("^${V2exConstants.BASE_URL}/member/\\w+/replies\\?p=\\d+\$").matcher(url).find()
+        return Pattern.compile("^${V2ex.BASE_URL}/member/\\w+/replies\\?p=\\d+\$").matcher(url).find()
     }
 
     override fun parser(html: String): Any {
