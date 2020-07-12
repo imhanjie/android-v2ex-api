@@ -1,5 +1,9 @@
 package com.imhanjie.v2ex.api.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Node(
     var id: Long,
     var title: String,
@@ -12,4 +16,4 @@ data class Node(
     var currentPage: Int,
     var totalPage: Int,
     var once: String
-)
+) : Parcelable

@@ -1,5 +1,9 @@
 package com.imhanjie.v2ex.api.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Topic(
     var id: Long,
     var title: String,
@@ -18,12 +22,13 @@ data class Topic(
     var isMyTopic: Boolean,
     var favoriteParam: String,
     var isFavorite: Boolean
-) {
+) : Parcelable {
 
+    @Parcelize
     data class Subtle(
         var no: Int,
         var createTime: String,
         var richContent: String
-    )
+    ) : Parcelable
 
 }

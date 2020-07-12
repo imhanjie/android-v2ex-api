@@ -4,7 +4,8 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class TinyNode(
-    var title: String,
-    var name: String
+data class SearchNode(
+    val id: String,
+    val text: String,
+    val topics: Int
 ) : Parcelable
