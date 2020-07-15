@@ -84,6 +84,8 @@ object TopicParser : ParserMatcher {
             isFavorite = it.text() == "取消收藏"
         }
 
+        val canAppend = document.selectFirst("#Main").selectFirst("div.header").select("a").firstOrNull { it.text() == "APPEND" } != null
+
         val replies: List<Reply> = parserReplies(document)
         return Topic(
             id,
@@ -102,7 +104,8 @@ object TopicParser : ParserMatcher {
             once,
             isMyTopic,
             favoriteParam,
-            isFavorite
+            isFavorite,
+            canAppend
         )
     }
 

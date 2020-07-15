@@ -4,9 +4,6 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class SignIn(
-    var keyUserName: String,
-    var keyPassword: String,
-    var keyVerCode: String,
-    var verUrlOnce: String
+data class AppendTopicInfo(
+    var once: String
 ) : Parcelable

@@ -21,7 +21,8 @@ data class Topic(
     var once: String,
     var isMyTopic: Boolean,
     var favoriteParam: String,
-    var isFavorite: Boolean
+    var isFavorite: Boolean,
+    var canAppend: Boolean
 ) : Parcelable {
 
     @Parcelize

@@ -25,9 +25,12 @@ val MATCHER_REGISTRATION = listOf<ParserMatcher>(
     NodeTopicsParser,
     NotificationsParser,
     SettingsParser,
-    SignInParser,
+    SignInInfoParser,
     TopicParser,
-    V2exResultParser
+    V2exResultParser,
+    CreateTopicInfoParser,
+    CreateTopicFailParser,
+    AppendTopicInfoParser
 )
 
 class ParserInterceptor : Interceptor {
@@ -40,10 +43,14 @@ class ParserInterceptor : Interceptor {
 
         var isFailRequest = false
 
-        // 单独处理重定向逻辑
+        //  非 200 code 处理
         if (response.code() < 200 || response.code() >= 300) {
-            if (response.code() == 302) {
+            if (response.code() != 302) {
+                return response.recreateFailJsonResponse("${response.code()} 请稍后再试")
+            } else {
+                // 单独处理 302 重定向逻辑
                 var redirectUrl = response.header("location") ?: ""
+                // 尝试给 redirectUrl 加上 BASE_URL
                 if (!redirectUrl.startsWith(V2ex.BASE_URL)) {
                     redirectUrl = V2ex.BASE_URL + redirectUrl
                 }
@@ -74,13 +81,24 @@ class ParserInterceptor : Interceptor {
                 } else if (redirectUrl.startsWith("${V2ex.BASE_URL}/signin?next=")) {
                     // 登录信息失效，直接返回
                     return response.recreateFailJsonResponse("请先登录后再进行查看", RestfulResult.CODE_USER_EXPIRED)
+                } else if (requestUrl == "${V2ex.BASE_URL}/new") {
+                    // 主题创建成功，返回 id
+                    val topicId: Long = redirectUrl.split("/").let { it[it.lastIndex - 1] }.toLong()
+                    return response.recreateSuccessJsonResponse(topicId)
                 } else {
                     // 其余重定向一律视为请求成功
                     return response.recreateSuccessJsonResponse("")
                 }
-            } else {
-                return response.recreateFailJsonResponse("${response.code()} 请稍后再试")
             }
+        }
+
+        /*
+         * 以下处理 code 为 200 的情况
+         */
+
+        // 创建主题时返回了 200 说明创建时有错误发生（若创建主题成功则会返回 302）
+        if (CreateTopicFailParser.match(requestUrl, originMethod)) {
+            isFailRequest = true
         }
 
         val targetParser = MATCHER_REGISTRATION.firstOrNull { it.match(requestUrl, originMethod) }

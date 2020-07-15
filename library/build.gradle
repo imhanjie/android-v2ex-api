@@ -16,7 +16,7 @@ publish {
     userOrg = 'melody'
     groupId = 'com.imhanjie.library'
     artifactId = 'v2ex-api'
-    publishVersion = '0.2.26'
+    publishVersion = '0.2.37'
     desc = 'v2ex api library for android'
     website = 'https://github.com/imhanjie/android-v2ex-api'
 }
@@ -60,7 +60,7 @@ dependencies {
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.13'
 
-    implementation 'org.jsoup:jsoup:1.13.1'
+    api 'org.jsoup:jsoup:1.13.1'
     implementation 'com.google.code.gson:gson:2.8.6'
     //noinspection GradleDependency
     compileOnly 'com.squareup.okhttp3:okhttp:3.14.9'

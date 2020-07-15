@@ -21,9 +21,10 @@ object SettingsParser : ParserMatcher {
         val eCounts = eCell.select("table")[1].select("span.bigger")
 
         val eMoney = document.selectFirst("#money").selectFirst("a")
-        val moneyGold = eMoney.text().split(" ")[0].toLong()
-        val moneySilver = eMoney.text().split(" ")[1].toLong()
-        val moneyBronze = eMoney.text().split(" ")[2].toLong()
+        val moneyArray = eMoney.text().split(" ")
+        val moneyGold = moneyArray.getOrElse(0) { "0" }.toLong()
+        val moneySilver = moneyArray.getOrElse(1) { "0" }.toLong()
+        val moneyBronze = moneyArray.getOrElse(2) { "0" }.toLong()
 
         return MyUserInfo(
             userName,
